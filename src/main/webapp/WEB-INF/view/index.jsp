@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Welcome</title>
+		<title>붕붕이를 부탁해 - 주차관리시스템</title>
 	</head> 
 	<body>
 		<c:url value="/showMessage.html" var="messageUrl" />
