@@ -7,12 +7,11 @@
 
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>붕붕이를 부탁해 - 주차관리시스템</title>
 	</head> 
 	<body>
-		<c:url value="/showMessage.html" var="messageUrl" />
-		<a href="${messageUrl}">Click to enter</a>
 		
+		<a href="<c:url value='/account/createAccount.do' />">회원가입</a><br>
 	</body>
 </html>
