@@ -22,44 +22,40 @@ $(function() {
 </head>
 <body>
 
-<form:form commandName="account" method="post">
-	<form:label path="id">아이디</form:label> 
-	<form:input path="id" />
-	<br/>
-	
-	<form:label path="pwd">비밀번호</form:label>
-	<form:password path="pwd"/>
-	<br/>
-	
-	<form:label path="name">이름</form:label>
-	<form:input path="name"/>
-	<br/>
-	
-	<form:label path="gender">성별</form:label>
-	<form:radiobuttons items="${gender}" path="gender" /> 
-	<br/>
-	
-	<form:label path="phone">전화변호</form:label>
-	<form:input path="phone" />
-	<br/>
-	
-	<form:label path="birthday">생일</form:label>
-	<form:input type="date" path="birthday" />
-	
-	
-	우편번호: <input type="text" name="address.zipcode" value="${account.address.zipcode}" />
-	<form:errors path="address.zipcode" />
-	<br/>
-	주소1: <input type="text" name="address.address1" value="${account.address.address1}" />
-	<form:errors path="address.address1" />
-	<br/>
-	주소2: <input type="text" name="address.address2" value="${account.address.address2}" />
-	<form:errors path="address.address2" />
-	<br/>
-	<input type="submit" value="전송"/>
-</form:form>
-
-<!-- <form:errors path="name" /> -->
+	<form:form commandName="account" method="post">
+		<form:label path="id">아이디</form:label> 
+		<form:input path="id" />
+		<form:errors path="id" />
+		<br/>
+		
+		<form:label path="pwd">비밀번호</form:label>
+		<form:password path="pwd"/>
+		<form:errors path="pwd" />
+		<br/>
+		
+		<form:label path="name">이름</form:label>
+		<form:input path="name"/>
+		<form:errors path="name" />
+		<br/>
+		
+		<form:label path="gender">성별</form:label> &nbsp;&nbsp;&nbsp;&nbsp;
+			남자 <form:radiobutton path="gender" value="m" />&nbsp;&nbsp;&nbsp;&nbsp;
+			여자 <form:radiobutton path="gender" value="w" />
+			<form:errors path="gender" />
+		<br/>
+		
+		<form:label path="phone">전화변호</form:label>
+		<form:input path="phone" />
+		<form:errors path="phone" />
+		<br/>
+		
+		<form:label path="birthday">생일</form:label>
+		<form:input type="date" path="birthday" />
+		<form:errors path="birthday" />
+		<br/>
+		
+		<input type="submit" value="submit" />
+	</form:form>
 
 </body>
 </html>
