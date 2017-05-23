@@ -29,5 +29,9 @@
 			<a href="<c:url value='/signOut/signOut.do' />">로그아웃</a><br>
 		</c:if>
 		
+		<br><br>
+		
+		<a href="<c:url value='/account/showAccount.do' />">마이페이지</a><br>
+		
 	</body>
 </html>
