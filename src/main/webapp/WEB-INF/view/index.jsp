@@ -12,6 +12,22 @@
 	</head> 
 	<body>
 		
+<%-- 		<%=(String)session.getAttribute("id") %> --%>
+		
+        <c:if test="${!empty sessionScope.id}">
+			<font size="2" color="BLACK"> 환영합니다 <c:out value="${sessionScope.id}"/>님!</font>
+        </c:if>
+        <br/>
+        
 		<a href="<c:url value='/account/createAccount.do' />">회원가입</a><br>
+		
+		<c:if test="${empty sessionScope.id}">
+			<a href="<c:url value='/signIn/signIn.do' />">로그인</a><br>
+		</c:if>
+ 		
+ 		<c:if test="${!empty sessionScope.id}">
+			<a href="<c:url value='/signOut/signOut.do' />">로그아웃</a><br>
+		</c:if>
+		
 	</body>
 </html>

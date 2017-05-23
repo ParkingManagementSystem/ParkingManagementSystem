@@ -1,12 +1,14 @@
 package org.springframework.samples.web.validator;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.web.command.AccountCommand;
+import org.springframework.samples.web.service.AccountService;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 public class AccountValidator implements Validator{
-
+	
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return AccountCommand.class.isAssignableFrom(clazz);

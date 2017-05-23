@@ -10,7 +10,6 @@ public class AccountCommand {
 	private String name;
 	private String gender;
 	private String phone;
-//	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private Date birthday;
 	public String getId() {
 		return id;

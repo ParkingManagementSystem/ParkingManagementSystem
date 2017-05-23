@@ -14,9 +14,13 @@ public interface AccountService {
 	
 	public void stopAccount(String id);
 	
-	Account selectAccount(String id);
+	public Account selectAccount(String id);
 	
-	List<Account> getAccountList();
+	public Account getAccount(String id, String pwd);
 	
-	List<Account> getShareAccountList();
+	public List<Account> getAccountList();
+	
+	public List<Account> getShareAccountList();
+	
+	public boolean hasId(String id);
 }

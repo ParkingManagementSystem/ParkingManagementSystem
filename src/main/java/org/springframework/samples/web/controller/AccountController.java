@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -29,6 +30,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/account")
 public class AccountController {
+	private static final String index = "index";
+	private static final String form = "accountForm";
+	private static final String info = "accountInfo";
 	
 	@Autowired
 	private AccountService accountService;
@@ -51,25 +55,36 @@ public class AccountController {
 	//회원가입 폼 보여주기
 	@RequestMapping(value="/createAccount.do", method = RequestMethod.GET)
 	public String createForm() {
-		return "accountForm";
+		return form;
 	}
 	
 	//회원가입 폼 submit
 	@RequestMapping(value="/createAccount.do", method = RequestMethod.POST)
-	public String createFormSubmit(@ModelAttribute("account") AccountCommand account, 
-			BindingResult result) {
+	public String createFormSubmit(@ModelAttribute("account") AccountCommand account, BindingResult result, HttpSession session) {
+		
 		new AccountValidator().validate(account, result);
-		if (result.hasErrors()) {
-			return "accountForm";
+		
+		if (result.hasErrors()) { //form error check
+			return form;
 		}
+		
+		if(accountService.hasId(account.getId())) { //ID duplication check
+			result.rejectValue("id", "alreadyExistsId");
+			return form;
+		}
+		
 		accountService.insertAccount(account);
-		return "index";
+		
+		//saving signed id
+		session.setAttribute("id", account.getId());
+				
+		return index;
 	}
 	
 	//회원 정보 수정 폼 보여주기
 	@RequestMapping(value="/updateAccount.do", method = RequestMethod.GET)
 	public String updateForm() {
-		return "accountForm";
+		return form;
 	}
 	
 	//회원 정보 update 처리
@@ -79,25 +94,21 @@ public class AccountController {
 				BindingResult result) {
 			new AccountValidator().validate(account, result);
 			if (result.hasErrors()) {
-				return "accountInfo"; //showAccount.do?id=00 으로 보내면 될 듯...
+				return info; //showAccount.do?id=00 으로 보내면 될 듯...
 			}
-			return "index";
+			return index;
 		}
 	
 	//회원 정보 보여주기
 	@RequestMapping("/showAccount.do")
 	public String showAccountInfo() { //RequestParam 쓰기
-		return "accountInfo";
+		return info;
 	}
 	
 	//탈퇴 처리
 	@RequestMapping("/deleteAccount.do")
 	public String deleteAccount() { //RequestParam 쓰기
-		return "index";
+		return index;
 	}
-	
-	//setting service
-//	public void setAccountService(AccountServiceImpl accountService) {
-//		this.accountService = accountService;
-//	}
+
 }

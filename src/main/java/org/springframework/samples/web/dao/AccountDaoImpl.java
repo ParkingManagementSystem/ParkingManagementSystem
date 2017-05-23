@@ -15,6 +15,11 @@ public class AccountDaoImpl implements AccountDao {
 	private AccountMapper accountMapper;
 	
 	@Override
+	public boolean hasId(String id) throws DataAccessException {
+		return id.equals(accountMapper.selectId(id)) ? true : false;
+	}
+	
+	@Override
 	public void insertAccount(Account account) throws DataAccessException {
 		// TODO Auto-generated method stub
 		accountMapper.insertAccount(account);
@@ -42,6 +47,11 @@ public class AccountDaoImpl implements AccountDao {
 	public Account selectAccount(String id) throws DataAccessException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public Account getAccount(String id, String pwd) throws DataAccessException {
+		return accountMapper.getAccount(id, pwd);
 	}
 
 	@Override

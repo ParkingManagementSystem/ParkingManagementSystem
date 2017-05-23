@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.web.command.AccountCommand;
 import org.springframework.samples.web.dao.AccountDao;
+import org.springframework.samples.web.dao.mapper.AccountMapper;
 import org.springframework.samples.web.domain.Account;
 import org.springframework.stereotype.Service;
 
@@ -59,6 +60,11 @@ public class AccountServiceImpl implements AccountService{
 	}
 
 	@Override
+	public Account getAccount(String id, String pwd) {
+		return accountDao.getAccount(id, pwd);
+	}
+	
+	@Override
 	public List<Account> getAccountList() {
 		// TODO Auto-generated method stub
 		return null;
@@ -69,5 +75,12 @@ public class AccountServiceImpl implements AccountService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean hasId(String id) {
+		return accountDao.hasId(id);
+	}
+
+	
 
 }
