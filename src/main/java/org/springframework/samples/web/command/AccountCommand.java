@@ -3,6 +3,7 @@ package org.springframework.samples.web.command;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.samples.web.domain.Account;
 
 public class AccountCommand {
 	private String id;
@@ -11,6 +12,17 @@ public class AccountCommand {
 	private String gender;
 	private String phone;
 	private Date birthday;
+	public AccountCommand() {
+		
+	}
+	public AccountCommand(Account account) {
+		this.id = account.getId();
+		this.pwd = account.getPwd();
+		this.name = account.getName();
+		this.gender = account.getGender();
+		this.phone = account.getPhone();
+		this.birthday = account.getBirthday();
+	}
 	public String getId() {
 		return id;
 	}
@@ -47,5 +59,11 @@ public class AccountCommand {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+	@Override
+	public String toString() {
+		return "AccountCommand [id=" + id + ", pwd=" + pwd + ", name=" + name + ", gender=" + gender + ", phone="
+				+ phone + ", birthday=" + birthday + "]";
+	}
+	
 	
 }

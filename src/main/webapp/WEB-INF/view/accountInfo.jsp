@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%
+    request.setCharacterEncoding("UTF-8");
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -28,7 +29,9 @@
 	
 	BIRTHDAY <br/>
 	
-	<a href="<c:url value='/account/updateAccount.do?id=${sessionScope.id}'/>">수정하기</a><br>
+	<a href="<c:url value='/account/updateAccount.do?id=${sessionScope.id}'/>">회원정보 수정</a><br>
+	
+	<a href="<c:url value='/account/updateAccount.do?id=${sessionScope.id}'/>">비밀번호 수정</a><br>
 	
 	<a href="<c:url value='/account/deleteAccount.do?id=${sessionScope.id}'/>" onClick="return delete_confirm();">탈퇴하기</a><br>
 </body>

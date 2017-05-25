@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%
@@ -8,31 +8,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>회원 정보</title>
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery.min.js"></script>
-    
-<script>
-$(function() {
-  $( "#datepicker1" ).datepicker({
-    dateFormat: 'yy/mm/dd'
-  });
-});
-</script>
+<title>회원 정보 수정</title>
 
 </head>
 <body>
 
 	<form:form commandName="account" method="post">
+		* 아이디는 수정하실 수 없습니다.<br/>
 		<form:label path="id">아이디</form:label> 
-		<form:input path="id" />
+		<%-- <form:input path="id" disabled="true" /> --%>
+ 		<form:input path="id" readonly="true"/> 
 		<form:errors path="id" />
-		<br/>
-		
-		<form:label path="pwd">비밀번호</form:label>
-		<form:password path="pwd"/>
-		<form:errors path="pwd" />
 		<br/>
 		
 		<form:label path="name">이름</form:label>

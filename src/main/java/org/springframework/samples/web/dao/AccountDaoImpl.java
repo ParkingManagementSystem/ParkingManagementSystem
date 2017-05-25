@@ -27,8 +27,7 @@ public class AccountDaoImpl implements AccountDao {
 
 	@Override
 	public void updateAccount(Account account) throws DataAccessException {
-		// TODO Auto-generated method stub
-		
+		accountMapper.updateAccount(account);
 	}
 
 	@Override

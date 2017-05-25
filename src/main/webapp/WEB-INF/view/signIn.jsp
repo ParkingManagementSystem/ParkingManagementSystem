@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,11 +12,11 @@
 	
 	<form:form commandName="account" method="post">
 		<form:errors element="div" class="error-color"/>
-		���̵� <form:input path="id"/>
+		아이디 <form:input path="id"/>
 		<form:errors path="id" class="error-color"/><br>
-		��й�ȣ<form:password path="pwd"/>
+		비밀번호<form:password path="pwd"/>
 		<form:errors path="pwd" class="error-color"/><br>
-		<input type="submit" value="����">
+		<input type="submit" value="전송">
 	</form:form>
 	
 </body>

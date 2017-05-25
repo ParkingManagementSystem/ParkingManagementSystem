@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.web.command.AccountCommand;
 import org.springframework.samples.web.dao.AccountDao;
-import org.springframework.samples.web.dao.mapper.AccountMapper;
 import org.springframework.samples.web.domain.Account;
 import org.springframework.stereotype.Service;
 
@@ -37,8 +36,9 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public void updateAccount(AccountCommand accountCommand) {
-		// TODO Auto-generated method stub
-		
+		//accountCommand => account로 바꿔서 셋팅해주고 리턴해주기
+		System.out.println(new Account(accountCommand));
+		accountDao.updateAccount(new Account(accountCommand));
 	}
 
 	@Override
