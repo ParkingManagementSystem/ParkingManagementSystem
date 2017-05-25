@@ -1,5 +1,6 @@
 package org.springframework.samples.web.dao.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -17,6 +18,7 @@ public interface AccountMapper {
 	
 	void updateAccount(Account account);
 	
+	@Delete("DELETE FROM MEMBER WHERE id =#{id}")
 	void deleteAccount(String id);
 	
 	void stopAccount(String id);

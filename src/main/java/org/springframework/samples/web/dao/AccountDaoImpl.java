@@ -33,8 +33,7 @@ public class AccountDaoImpl implements AccountDao {
 
 	@Override
 	public void deleteAccount(String id) throws DataAccessException {
-		// TODO Auto-generated method stub
-		
+		accountMapper.deleteAccount(id);
 	}
 
 	@Override
@@ -45,8 +44,7 @@ public class AccountDaoImpl implements AccountDao {
 
 	@Override
 	public Account selectAccount(String id) throws DataAccessException {
-		// TODO Auto-generated method stub
-		return null;
+		return accountMapper.selectAccount(id);
 	}
 	
 	@Override

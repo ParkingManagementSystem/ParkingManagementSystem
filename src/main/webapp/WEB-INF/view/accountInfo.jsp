@@ -1,15 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>ȸ�� ���� ����</title>
+<title>회원 정보 보기</title>
+
+<script type="text/javascript">
+	function delete_confirm() {
+		return confirm("정말로 탈퇴하시겠습니까?");
+	}
+</script>
+
 </head>
 <body>
 
-
+	ID ${account.id} <br/>
+	
+	NAME ${account.name} <br/>
+	
+	GENDER <br/>
+	
+	PHONE ${account.phone} <br/>
+	
+	BIRTHDAY <br/>
+	
+	<a href="<c:url value='/account/updateAccount.do?id=${sessionScope.id}'/>">수정하기</a><br>
+	
+	<a href="<c:url value='/account/deleteAccount.do?id=${sessionScope.id}'/>" onClick="return delete_confirm();">탈퇴하기</a><br>
 </body>
 </html>

@@ -43,8 +43,7 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public void deleteAccount(String id) {
-		// TODO Auto-generated method stub
-		
+		accountDao.deleteAccount(id);
 	}
 
 	@Override
@@ -55,8 +54,7 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public Account selectAccount(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return accountDao.selectAccount(id);
 	}
 
 	@Override

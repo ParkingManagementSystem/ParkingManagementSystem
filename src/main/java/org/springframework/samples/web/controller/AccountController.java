@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /*
  * MyPage기능 처리
@@ -33,82 +35,87 @@ public class AccountController {
 	private static final String index = "index";
 	private static final String form = "accountForm";
 	private static final String info = "accountInfo";
-	
+
 	@Autowired
 	private AccountService accountService;
-	
+
 	@InitBinder
-    public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); //yyyy-MM-dd'T'HH:mm:ssZ example
-        dateFormat.setLenient(false);
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
-    }
-	
+	public void initBinder(WebDataBinder binder) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // yyyy-MM-dd'T'HH:mm:ssZ
+																			// example
+		dateFormat.setLenient(false);
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+	}
+
 	@ModelAttribute("account")
 	public AccountCommand formBacking(HttpServletRequest request) throws ParseException {
 		AccountCommand account = new AccountCommand();
-		//빈 string을 date로 parse할 수 없기 때문에 초기값 지정.. (Could not parse date: Unparseable date)
+		// 빈 string을 date로 parse할 수 없기 때문에 초기값 지정.. (Could not parse date:
+		// Unparseable date)
 		account.setBirthday(new java.text.SimpleDateFormat("yyyy-MM-dd").parse("2000-01-01"));
 		return account;
 	}
-	
-	//회원가입 폼 보여주기
-	@RequestMapping(value="/createAccount.do", method = RequestMethod.GET)
+
+	// 회원가입 폼 보여주기
+	@RequestMapping(value = "/createAccount.do", method = RequestMethod.GET)
 	public String createForm() {
 		return form;
 	}
-	
-	//회원가입 폼 submit
-	@RequestMapping(value="/createAccount.do", method = RequestMethod.POST)
-	public String createFormSubmit(@ModelAttribute("account") AccountCommand account, BindingResult result, HttpSession session) {
-		
+
+	// 회원가입 폼 submit
+	@RequestMapping(value = "/createAccount.do", method = RequestMethod.POST)
+	public String createFormSubmit(@ModelAttribute("account") AccountCommand account, BindingResult result,
+			HttpSession session) {
+
 		new AccountValidator().validate(account, result);
-		
-		if (result.hasErrors()) { //form error check
+
+		if (result.hasErrors()) { // form error check
 			return form;
 		}
-		
-		if(accountService.hasId(account.getId())) { //ID duplication check
+
+		if (accountService.hasId(account.getId())) { // ID duplication check
 			result.rejectValue("id", "alreadyExistsId");
 			return form;
 		}
-		
+
 		accountService.insertAccount(account);
-		
-		//saving signed id
+
+		// saving signed id
 		session.setAttribute("id", account.getId());
-				
-		return index;
-	}
-	
-	//회원 정보 수정 폼 보여주기
-	@RequestMapping(value="/updateAccount.do", method = RequestMethod.GET)
-	public String updateForm() {
-		return form;
-	}
-	
-	//회원 정보 update 처리
-	//회원가입 폼 submit
-		@RequestMapping(value="/updateAccount.do", method = RequestMethod.POST)
-		public String updateFormSubmit(@ModelAttribute("account") AccountCommand account, 
-				BindingResult result) {
-			new AccountValidator().validate(account, result);
-			if (result.hasErrors()) {
-				return info; //showAccount.do?id=00 으로 보내면 될 듯...
-			}
-			return index;
-		}
-	
-	//회원 정보 보여주기
-	@RequestMapping("/showAccount.do")
-	public String showAccountInfo() { //RequestParam 쓰기
-		return info;
-	}
-	
-	//탈퇴 처리
-	@RequestMapping("/deleteAccount.do")
-	public String deleteAccount() { //RequestParam 쓰기
+
 		return index;
 	}
 
+	// 회원 정보 수정 폼 보여주기
+	@RequestMapping(value = "/updateAccount.do", method = RequestMethod.GET)
+	public String updateForm() {
+		return form;
+	}
+
+	// 회원 정보 update 처리
+	// 회원가입 폼 submit
+	@RequestMapping(value = "/updateAccount.do", method = RequestMethod.POST)
+	public String updateFormSubmit(@ModelAttribute("account") AccountCommand account, BindingResult result) {
+		new AccountValidator().validate(account, result);
+		if (result.hasErrors()) {
+			return info; // showAccount.do?id=00 으로 보내면 될 듯...
+		}
+		return index;
+	}
+
+	// 회원 정보 보여주기
+	@RequestMapping("/showAccount.do")
+	public ModelAndView showAccountInfo(@RequestParam("id") String id) {
+		ModelAndView mav = new ModelAndView(info);
+		mav.addObject("account", accountService.selectAccount(id));
+		return mav;
+	}
+
+	// 탈퇴 처리
+	@RequestMapping("/deleteAccount.do")
+	public String deleteAccount(@RequestParam("id") String id, HttpSession session) { 
+		accountService.deleteAccount(id);
+		session.removeAttribute("id");
+		return index;
+	}
 }

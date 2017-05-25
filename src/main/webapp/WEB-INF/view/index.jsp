@@ -31,7 +31,7 @@
 		
 		<br><br>
 		
-		<a href="<c:url value='/account/showAccount.do' />">마이페이지</a><br>
+		<a href="<c:url value='/account/showAccount.do?id=${sessionScope.id}'/>">마이페이지</a><br>
 		
 	</body>
 </html>
