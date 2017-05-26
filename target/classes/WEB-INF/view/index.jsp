@@ -7,13 +7,11 @@
 
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>붕붕이를 부탁해 - 주차관리시스템</title>
 	</head> 
 	<body>
 		
-<<<<<<< HEAD
-=======
 <%-- 		<%=(String)session.getAttribute("id") %> --%>
 		
         <c:if test="${!empty sessionScope.id}">
@@ -47,7 +45,6 @@
 			</c:if>
 		
 		<br>
->>>>>>> e50df6632e7b60bc76ab76fe7f18399c988188db
 		
 	</body>
 </html>
