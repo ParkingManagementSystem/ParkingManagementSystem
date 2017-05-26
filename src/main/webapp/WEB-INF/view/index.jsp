@@ -7,13 +7,11 @@
 
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>붕붕이를 부탁해 - 주차관리시스템</title>
 	</head> 
 	<body>
 		
-<<<<<<< HEAD
-=======
 <%-- 		<%=(String)session.getAttribute("id") %> --%>
 		
         <c:if test="${!empty sessionScope.id}">
@@ -24,17 +22,12 @@
 		<a href="<c:url value='/account/createAccount.do' />">회원가입</a><br>
 		
 		<c:if test="${empty sessionScope.id}">
-			<a href="<c:url value='/signIn/signIn.do' />">로그인</a><br>
+			<a href="<c:url value='/signIn/signInForm.do' />">로그인</a><br>
 		</c:if>
  		
  		<c:if test="${!empty sessionScope.id}">
 			<a href="<c:url value='/signOut/signOut.do' />">로그아웃</a><br>
 		</c:if>
-		
-		<a href="<c:url value='/share/createForm.do' />">글 작성</a><br>
-		<a href="<c:url value='/share/shareParkingInfo.do?code=2' />">글 내용</a><br> 
-		
-		<a href="http://localhost:8081/ParkingManagementSystem/share/createForm.do"> 시발 나니 </a>
 		
 		<br><br>
 		
@@ -47,7 +40,6 @@
 			</c:if>
 		
 		<br>
->>>>>>> e50df6632e7b60bc76ab76fe7f18399c988188db
 		
 	</body>
 </html>

@@ -1,12 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%
+    request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>È¸¿ø Á¤º¸</title>
+<title>íšŒì› ì •ë³´</title>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
@@ -22,44 +24,40 @@ $(function() {
 </head>
 <body>
 
-<form:form commandName="account" method="post">
-	<form:label path="id">¾ÆÀÌµð</form:label> 
-	<form:input path="id" />
-	<br/>
-	
-	<form:label path="pwd">ºñ¹Ð¹øÈ£</form:label>
-	<form:password path="pwd"/>
-	<br/>
-	
-	<form:label path="name">ÀÌ¸§</form:label>
-	<form:input path="name"/>
-	<br/>
-	
-	<form:label path="gender">¼ºº°</form:label>
-	<form:radiobuttons items="${gender}" path="gender" /> 
-	<br/>
-	
-	<form:label path="phone">ÀüÈ­º¯È£</form:label>
-	<form:input path="phone" />
-	<br/>
-	
-	<form:label path="birthday">»ýÀÏ</form:label>
-	<form:input type="date" path="birthday" />
-	
-	
-	¿ìÆí¹øÈ£: <input type="text" name="address.zipcode" value="${account.address.zipcode}" />
-	<form:errors path="address.zipcode" />
-	<br/>
-	ÁÖ¼Ò1: <input type="text" name="address.address1" value="${account.address.address1}" />
-	<form:errors path="address.address1" />
-	<br/>
-	ÁÖ¼Ò2: <input type="text" name="address.address2" value="${account.address.address2}" />
-	<form:errors path="address.address2" />
-	<br/>
-	<input type="submit" value="Àü¼Û"/>
-</form:form>
-
-<!-- <form:errors path="name" /> -->
+	<form:form commandName="account" method="post">
+		<form:label path="id">ì•„ì´ë””</form:label> 
+		<form:input path="id" />
+		<form:errors path="id" />
+		<br/>
+		
+		<form:label path="pwd">ë¹„ë°€ë²ˆí˜¸</form:label>
+		<form:password path="pwd"/>
+		<form:errors path="pwd" />
+		<br/>
+		
+		<form:label path="name">ì´ë¦„</form:label>
+		<form:input path="name"/>
+		<form:errors path="name" />
+		<br/>
+		
+		<form:label path="gender">ì„±ë³„</form:label> &nbsp;&nbsp;&nbsp;&nbsp;
+			ë‚¨ìž <form:radiobutton path="gender" value="m" />&nbsp;&nbsp;&nbsp;&nbsp;
+			ì—¬ìž <form:radiobutton path="gender" value="w" />
+			<form:errors path="gender" />
+		<br/>
+		
+		<form:label path="phone">ì „í™”ë³€í˜¸</form:label>
+		<form:input path="phone" />
+		<form:errors path="phone" />
+		<br/>
+		
+		<form:label path="birthday">ìƒì¼</form:label>
+		<form:input type="date" path="birthday" />
+		<form:errors path="birthday" />
+		<br/>
+		
+		<input type="submit" value="submit" />
+	</form:form>
 
 </body>
 </html>

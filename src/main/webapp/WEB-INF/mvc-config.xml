@@ -6,17 +6,49 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="org.springframework.parking.web.controller"/>
+	<context:component-scan base-package="org.springframework.samples.web"/>
+      
+    <mvc:annotation-driven />
 
-	<mvc:annotation-driven />
+	<mvc:default-servlet-handler/>
 
-	<mvc:default-servlet-handler />
+	<mvc:view-controller view-name="index" path="/index"/>
 
-	<mvc:view-controller path="/index" view-name="index" />
-	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	        <!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
 	        <property name="prefix" value="/WEB-INF/view/"/>
 	        <property name="suffix" value=".jsp"/>
 	</bean>
 
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages.validation</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Interceptor -->
+	<mvc:interceptors>
+		<!-- Sign in check Interceptor -->
+		<mvc:interceptor>
+			<mvc:mapping path="/account/showAccount.do"/>
+			<bean class="org.springframework.samples.web.controller.SignInCheckInterceptor" />
+		</mvc:interceptor>
+		
+		<!-- Admin check Interceptor -->
+		<mvc:interceptor>
+			<mvc:mapping path="/admin/showAccountList.do"/>
+			<bean class="org.springframework.samples.web.controller.AdminCheckInterceptor" />
+		</mvc:interceptor>
+		
+		<!-- Stop Account check Interceptor -->
+		<mvc:interceptor>
+			<mvc:mapping path="/signIn/signIn.do"/>
+			<bean class="org.springframework.samples.web.controller.StopAccountCheckInterceptor" />
+		</mvc:interceptor>
+		
+	</mvc:interceptors>
+	
 </beans>
