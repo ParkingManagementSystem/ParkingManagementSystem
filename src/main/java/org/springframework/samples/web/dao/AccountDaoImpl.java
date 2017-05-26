@@ -63,4 +63,9 @@ public class AccountDaoImpl implements AccountDao {
 		return null;
 	}
 
+	@Override
+	public String getAdminId(String id, String pwd) throws DataAccessException {
+		return accountMapper.selectAdminId(id, pwd);
+	}
+
 }

@@ -1,7 +1,5 @@
 package org.springframework.samples.web.service;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,29 +13,16 @@ public class AccountServiceImpl implements AccountService{
 
 	@Autowired
 	private AccountDao accountDao;
-//	
+	
 	@Override
 	public void insertAccount(AccountCommand accountCommand) {
-		Account account = new Account();
-		account.setCommand(accountCommand);
-		
-		//accountCommand => account로 바꿔서 셋팅해주고 리턴해주기
-		Calendar calendar = new GregorianCalendar();
-		calendar.setTime(accountCommand.getBirthday());
-		int year = calendar.get(Calendar.YEAR);
-		//Add one to month {0 - 11}
-//		int month = calendar.get(Calendar.MONTH) + 1;
-//		int day = calendar.get(Calendar.DAY_OF_MONTH);
-		account.setAge(Calendar.getInstance().get(Calendar.YEAR) - year + 1); //연도 수정
-		account.setBlacklist(0);
-		
-		accountDao.insertAccount(account);
+		//accountCommand => account
+		accountDao.insertAccount(new Account(accountCommand));
 	}
 
 	@Override
 	public void updateAccount(AccountCommand accountCommand) {
-		//accountCommand => account로 바꿔서 셋팅해주고 리턴해주기
-		System.out.println(new Account(accountCommand));
+		//accountCommand => account
 		accountDao.updateAccount(new Account(accountCommand));
 	}
 
@@ -79,6 +64,10 @@ public class AccountServiceImpl implements AccountService{
 		return accountDao.hasId(id);
 	}
 
+	@Override
+	public String getAdminId(String id, String pwd) {
+		return accountDao.getAdminId(id, pwd);
+	}
 	
 
 }

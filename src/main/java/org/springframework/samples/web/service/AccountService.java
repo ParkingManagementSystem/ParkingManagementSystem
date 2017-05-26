@@ -1,6 +1,7 @@
 package org.springframework.samples.web.service;
 
 import java.util.List;
+
 import org.springframework.samples.web.command.AccountCommand;
 import org.springframework.samples.web.domain.Account;
 
@@ -23,4 +24,6 @@ public interface AccountService {
 	public List<Account> getShareAccountList();
 	
 	public boolean hasId(String id);
+	
+	public String getAdminId(String id, String pwd);
 }

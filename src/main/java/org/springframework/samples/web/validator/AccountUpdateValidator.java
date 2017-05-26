@@ -30,6 +30,8 @@ public class AccountUpdateValidator implements Validator{
 		if (account.getId() != null && !account.getId().trim().isEmpty()) {
 			if(account.getId().getBytes().length > 20)
 				errors.rejectValue("id", "maxLength.20");
+			if (account.getId().matches("^[a-zA-Z0-9]*$") == false)
+				errors.rejectValue("id", "invalidId");	
 		}
 		if (account.getName() != null || !account.getName().trim().isEmpty()) {
 			if(account.getName().getBytes().length > 20)

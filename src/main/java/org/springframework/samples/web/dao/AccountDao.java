@@ -1,8 +1,9 @@
 package org.springframework.samples.web.dao;
 
+import java.util.List;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.web.domain.Account;
-import java.util.List;
 
 public interface AccountDao {
 	
@@ -23,4 +24,7 @@ public interface AccountDao {
 	List<Account> getAccountList() throws DataAccessException;
 	
 	List<Account> getShareAccountList() throws DataAccessException;
+	
+	String getAdminId(String id, String pwd) throws DataAccessException;
+	
 }

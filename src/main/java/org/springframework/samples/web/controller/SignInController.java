@@ -51,11 +51,20 @@ public class SignInController {
 		}
 		
 		Account account = accountService.getAccount(signInCommand.getId(), signInCommand.getPwd());
+		String adminId = accountService.getAdminId(signInCommand.getId(), signInCommand.getPwd());
 		
 		//invalid signInCommand check
-		if(account == null) { 
+		if(account == null && adminId == null) {
 			result.reject("invalidAccount", "invalidAccount");
 			return form;
+		}
+		
+		//admin id check
+		if(adminId != null) { 
+			session.setAttribute("admin", adminId);
+			//saving admin id
+			session.setAttribute("id", adminId);
+			return index;
 		}
 		
 		//saving signed id

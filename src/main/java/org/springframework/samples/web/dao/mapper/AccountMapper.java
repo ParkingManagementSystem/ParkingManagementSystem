@@ -36,4 +36,8 @@ public interface AccountMapper {
 	List<Account> getAccountList();
 
 	List<Account> getShareAccountList();
+	
+	@Select("SELECT id FROM MANAGER WHERE id = #{id} and pwd = #{pwd}")
+	String selectAdminId(@Param("id") String id, @Param("pwd") String pwd);
+	
 }

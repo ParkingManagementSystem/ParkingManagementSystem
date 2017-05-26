@@ -41,8 +41,8 @@ public class AccountController {
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // yyyy-MM-dd'T'HH:mm:ssZ
-																			// example
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
+		
 		dateFormat.setLenient(false);
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
@@ -87,12 +87,6 @@ public class AccountController {
 	// 회원 정보 수정 폼 보여주기
 	@RequestMapping(value = "/updateAccount.do", method = RequestMethod.GET)
 	public ModelAndView updateForm(@RequestParam("id") String id) {
-//		account = new AccountCommand(accountService.selectAccount(id));
-//		System.out.println(account);
-//		ModelAndView mav = new ModelAndView(updateForm);
-//		mav.addObject("account", accountService.selectAccount(id));
-//		return mav;
-		
 		//Get account -> accountCommand
 		AccountCommand account = new AccountCommand(accountService.selectAccount(id));
 		

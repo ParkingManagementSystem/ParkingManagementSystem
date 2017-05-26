@@ -2,7 +2,6 @@ package org.springframework.samples.web.command;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.web.domain.Account;
 
 public class AccountCommand {

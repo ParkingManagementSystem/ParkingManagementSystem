@@ -31,7 +31,15 @@
 		
 		<br><br>
 		
-		<a href="<c:url value='/account/showAccount.do?id=${sessionScope.id}'/>">마이페이지</a><br>
+		
+			<c:if test="${empty sessionScope.admin}">
+				<a href="<c:url value='/account/showAccount.do?id=${sessionScope.id}'/>"> MYPAGE </a>
+			</c:if>
+			<c:if test="${!empty sessionScope.admin}">
+				<a href="<c:url value='/admin/showAccountList.do'/>"> SETTING </a>
+			</c:if>
+		
+		<br>
 		
 	</body>
 </html>
