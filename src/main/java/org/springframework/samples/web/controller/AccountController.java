@@ -109,14 +109,14 @@ public class AccountController {
 		
 		accountService.updateAccount(accountCommand);
 		
-		return index;
+		return info;
 	}
 
 	// 회원 정보 보여주기
 	@RequestMapping("/showAccount.do")
-	public ModelAndView showAccountInfo(@RequestParam("id") String id) {
+	public ModelAndView showAccountInfo(HttpSession session) {
 		ModelAndView mav = new ModelAndView(info);
-		mav.addObject("account", accountService.selectAccount(id));
+		mav.addObject("account", accountService.selectAccount(session.getAttribute("id").toString()));
 		return mav;
 	}
 

@@ -5,6 +5,7 @@ import org.springframework.samples.web.service.AccountService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /*
@@ -19,6 +20,7 @@ public class AdminController {
 	private static final String accountList = "showAccountList";
 	private static final String shareList = "showShareAccountList";
 	private static final String notAdmin = "noPermission";
+	private static final String info = "accountInfo";
 	
 	@Autowired
 	private AccountService accountService;
@@ -37,6 +39,14 @@ public class AdminController {
 		return shareList;
 	}
 	
+	// 회원 정보 보여주기
+	@RequestMapping("/showAccount.do")
+	public ModelAndView showAccountInfo(@RequestParam("id") String id) {
+		ModelAndView mav = new ModelAndView(info);
+		mav.addObject("account", accountService.selectAccount(id));
+		return mav;
+	}
+	//권한 없을 경우 체크
 	@RequestMapping("/noPermission.do")
 	public String notAdmin() {
 		return notAdmin;

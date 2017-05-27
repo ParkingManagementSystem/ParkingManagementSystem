@@ -19,6 +19,9 @@ public class StopAccountCheckInterceptor extends HandlerInterceptorAdapter {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		
+		if(id == null)
+			return true;
+		
 		for (SignInCommand command : accountService.getBlacklistAccount()) {
 			if (id.equals(command.getId()) && pwd.equals(command.getPwd())) {
 				response.sendRedirect(request.getContextPath() + stop);

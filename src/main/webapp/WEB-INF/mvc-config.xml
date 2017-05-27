@@ -39,7 +39,7 @@
 		
 		<!-- Admin check Interceptor -->
 		<mvc:interceptor>
-			<mvc:mapping path="/admin/showAccountList.do"/>
+			<mvc:mapping path="/admin/*.do"/>
 			<bean class="org.springframework.samples.web.controller.AdminCheckInterceptor" />
 		</mvc:interceptor>
 		
