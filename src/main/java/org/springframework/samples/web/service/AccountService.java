@@ -3,6 +3,7 @@ package org.springframework.samples.web.service;
 import java.util.List;
 
 import org.springframework.samples.web.command.AccountCommand;
+import org.springframework.samples.web.command.SignInCommand;
 import org.springframework.samples.web.domain.Account;
 
 public interface AccountService {
@@ -21,7 +22,7 @@ public interface AccountService {
 	
 	public List<Account> getAccountList();
 	
-	public List<String> getBlacklistAccount();
+	public List<SignInCommand> getBlacklistAccount();
 	
 	public List<AccountCommand> getAccountCommandList();
 	

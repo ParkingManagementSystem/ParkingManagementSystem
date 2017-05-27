@@ -18,8 +18,6 @@
 		<form:errors path="pwd" class="error-color"/><br>
 		<input type="submit" value="전송">
 	</form:form>
-	
-<%-- 	<% --%>
-<%-- 	%> --%>
+
 </body>
 </html>

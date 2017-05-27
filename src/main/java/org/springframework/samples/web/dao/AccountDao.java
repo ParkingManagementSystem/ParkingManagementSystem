@@ -3,6 +3,7 @@ package org.springframework.samples.web.dao;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.samples.web.command.SignInCommand;
 import org.springframework.samples.web.domain.Account;
 
 public interface AccountDao {
@@ -21,7 +22,7 @@ public interface AccountDao {
 	
 	Account getAccount(String id, String pwd) throws DataAccessException;
 	
-	List<String> getBlacklistAccount() throws DataAccessException;
+	List<SignInCommand> getBlacklistAccount() throws DataAccessException;
 	
 	List<Account> getAccountList() throws DataAccessException;
 	

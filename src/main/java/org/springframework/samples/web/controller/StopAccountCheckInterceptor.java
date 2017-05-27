@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.web.command.SignInCommand;
 import org.springframework.samples.web.service.AccountService;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -15,15 +16,16 @@ public class StopAccountCheckInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		System.out.println(request.getParameter("id"));
+		String id = request.getParameter("id");
+		String pwd = request.getParameter("pwd");
 		
-		for (String s : accountService.getBlacklistAccount()) {
-			System.out.println(s);
-			if (request.getParameter("id").equals(s)) {
+		for (SignInCommand command : accountService.getBlacklistAccount()) {
+			if (id.equals(command.getId()) && pwd.equals(command.getPwd())) {
 				response.sendRedirect(request.getContextPath() + stop);
 				return false;
 			}
 		}
+		
 		return true;
 	}
 }

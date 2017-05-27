@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.samples.web.command.SignInCommand;
 import org.springframework.samples.web.dao.mapper.AccountMapper;
 import org.springframework.samples.web.domain.Account;
 import org.springframework.stereotype.Repository;
@@ -52,7 +53,7 @@ public class AccountDaoImpl implements AccountDao {
 	}
 
 	@Override
-	public List<String> getBlacklistAccount() throws DataAccessException {
+	public List<SignInCommand> getBlacklistAccount() throws DataAccessException {
 		return accountMapper.getBlacklistAccount();
 	}
 	

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.samples.web.command.SignInCommand;
 import org.springframework.samples.web.domain.Account;
 
 public interface AccountMapper {
@@ -33,8 +34,8 @@ public interface AccountMapper {
 	@Select("SELECT id, pwd, name, gender, phone, birthday, age, blacklist FROM MEMBER WHERE id = #{id} and pwd = #{pwd}")
 	Account getAccount(@Param("id") String id, @Param("pwd") String pwd);
 	
-	@Select("SELECT id FROM MEMBER WHERE blacklist = 1")
-	List<String> getBlacklistAccount();
+	@Select("SELECT id, pwd FROM MEMBER WHERE blacklist = 1")
+	List<SignInCommand> getBlacklistAccount();
 	
 	@Select("SELECT * FROM MEMBER")
 	List<Account> getAccountList();
