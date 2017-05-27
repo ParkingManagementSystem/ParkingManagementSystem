@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.samples.web.command.SignInCommand;
 import org.springframework.samples.web.domain.Account;
+import org.springframework.samples.web.domain.Evaluate;
 
 public interface AccountMapper {
 	
@@ -40,7 +41,8 @@ public interface AccountMapper {
 	@Select("SELECT * FROM MEMBER")
 	List<Account> getAccountList();
 
-	List<Account> getShareAccountList();
+	@Select("SELECT e.id, m.name, likeCount, hateCount, avgCount, m.blacklist from member m, evaluate_history e where m.id = e.id")
+	List<Evaluate> getShareAccountList();
 	
 	@Select("SELECT id FROM MANAGER WHERE id = #{id} and pwd = #{pwd}")
 	String selectAdminId(@Param("id") String id, @Param("pwd") String pwd);

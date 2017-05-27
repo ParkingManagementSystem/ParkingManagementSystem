@@ -7,6 +7,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.samples.web.command.SignInCommand;
 import org.springframework.samples.web.dao.mapper.AccountMapper;
 import org.springframework.samples.web.domain.Account;
+import org.springframework.samples.web.domain.Evaluate;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -63,9 +64,8 @@ public class AccountDaoImpl implements AccountDao {
 	}
 
 	@Override
-	public List<Account> getShareAccountList() throws DataAccessException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Evaluate> getShareAccountList() throws DataAccessException {
+		return accountMapper.getShareAccountList();
 	}
 
 	@Override

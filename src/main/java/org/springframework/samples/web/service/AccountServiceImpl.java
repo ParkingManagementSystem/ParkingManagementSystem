@@ -8,6 +8,7 @@ import org.springframework.samples.web.command.AccountCommand;
 import org.springframework.samples.web.command.SignInCommand;
 import org.springframework.samples.web.dao.AccountDao;
 import org.springframework.samples.web.domain.Account;
+import org.springframework.samples.web.domain.Evaluate;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -71,9 +72,8 @@ public class AccountServiceImpl implements AccountService{
 	}
 	
 	@Override
-	public List<Account> getShareAccountList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Evaluate> getShareAccountList() {
+		return accountDao.getShareAccountList();
 	}
 
 	@Override

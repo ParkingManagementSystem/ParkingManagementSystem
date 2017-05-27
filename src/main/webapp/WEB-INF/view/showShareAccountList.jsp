@@ -40,7 +40,7 @@
 
 <script type="text/javascript">
 	function delete_confirm() {
-		return confirm("정말로 탈퇴하시겠습니까?");
+		return confirm("정말로 이 회원을 탈퇴 시키시겠습니까?");
 	}
 </script>
 </head>
@@ -121,14 +121,18 @@
 			<td> 탈퇴 </td>
 		</tr>
 	
-		<c:forEach var="account" items="${accountList}" varStatus="status">
+		<c:forEach var="account" items="${shareAccountList}" varStatus="status">
 		<tr>
 			<td>${status.count}</td> 
 			<td>
 				<a href="<c:url value='/admin/showAccount.do?id=${account.id}'/>">${account.id}</a>
 			</td>
 			<td>${account.name}</td>
-			<td>${account.phone}</td>
+			<td>${account.likeCount}</td>
+			<td>${account.hateCount}</td>
+			<td>${account.avgCount}</td>
+			<td>정지</td>
+			<td><a href="<c:url value='/account/deleteAccount.do?id=${account.id}'/>" onClick="return delete_confirm();">탈퇴</a></td>
 		</tr>
 		</c:forEach>
 		

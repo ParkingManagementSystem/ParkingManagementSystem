@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.samples.web.command.AccountCommand;
 import org.springframework.samples.web.command.SignInCommand;
 import org.springframework.samples.web.domain.Account;
+import org.springframework.samples.web.domain.Evaluate;
 
 public interface AccountService {
 	
@@ -26,7 +27,7 @@ public interface AccountService {
 	
 	public List<AccountCommand> getAccountCommandList();
 	
-	public List<Account> getShareAccountList();
+	public List<Evaluate> getShareAccountList();
 	
 	public boolean hasId(String id);
 	

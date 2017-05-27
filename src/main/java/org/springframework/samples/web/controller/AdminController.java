@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.web.service.AccountService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,7 +25,7 @@ public class AdminController {
 	private AccountService accountService;
 
 	// 전체 회원 목록 보여주기
-	@RequestMapping(value = "/showAccountList.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/showAccountList.do")
 	public ModelAndView accountList() {
 		ModelAndView mav = new ModelAndView(accountList);
 		mav.addObject("accountList", accountService.getAccountList());
@@ -34,9 +33,11 @@ public class AdminController {
 	}
 
 	// 주차장 공유 전체 회원 목록 보여주기
-	@RequestMapping(value = "/showShareAccountList.do", method = RequestMethod.GET)
-	public String shareAccountList() {
-		return shareList;
+	@RequestMapping(value = "/showShareAccountList.do")
+	public ModelAndView shareAccountList() {
+		ModelAndView mav = new ModelAndView(shareList);
+		mav.addObject("shareAccountList", accountService.getShareAccountList());
+		return mav;
 	}
 	
 	// 회원 정보 보여주기
