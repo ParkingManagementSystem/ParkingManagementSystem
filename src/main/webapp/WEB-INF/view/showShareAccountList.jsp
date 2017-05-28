@@ -131,7 +131,16 @@
 			<td>${account.likeCount}</td>
 			<td>${account.hateCount}</td>
 			<td>${account.avgCount}</td>
-			<td>정지</td>
+			<td>
+				<!-- 블랙리스트가 아니면 -->
+				<c:if test="${account.blacklist eq '0'}"> 
+					<a href="<c:url value='/admin/stopAccount.do?id=${account.id}'/>"> ACTIVE </a> 
+				</c:if>
+				<!-- 블랙리스트이면 -->
+				<c:if test="${account.blacklist eq '1'}"> 
+					<a href="<c:url value='/admin/activeAccount.do?id=${account.id}'/>"> STOP </a> 
+				</c:if>
+			</td>
 			<td><a href="<c:url value='/account/deleteAccount.do?id=${account.id}'/>" onClick="return delete_confirm();">탈퇴</a></td>
 		</tr>
 		</c:forEach>

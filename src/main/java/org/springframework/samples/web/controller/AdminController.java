@@ -47,6 +47,25 @@ public class AdminController {
 		mav.addObject("account", accountService.selectAccount(id));
 		return mav;
 	}
+	
+	// 회원 정지
+	@RequestMapping("/stopAccount.do")
+	public ModelAndView stopAccount(@RequestParam("id") String id) {
+		ModelAndView mav = new ModelAndView(shareList);
+		accountService.stopAccount(id);
+		mav.addObject("shareAccountList", accountService.getShareAccountList());
+		return mav;
+	}
+	
+	// 정지 해제
+	@RequestMapping("/activeAccount.do")
+	public ModelAndView activeAccount(@RequestParam("id") String id) {
+		ModelAndView mav = new ModelAndView(shareList);
+		accountService.activeAccount(id);
+		mav.addObject("shareAccountList", accountService.getShareAccountList());
+		return mav;
+	}
+	
 	//권한 없을 경우 체크
 	@RequestMapping("/noPermission.do")
 	public String notAdmin() {

@@ -17,6 +17,8 @@ public interface AccountService {
 	
 	public void stopAccount(String id);
 	
+	public void activeAccount(String id);
+	
 	public Account selectAccount(String id);
 	
 	public Account getAccount(String id, String pwd);

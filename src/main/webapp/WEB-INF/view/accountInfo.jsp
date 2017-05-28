@@ -102,29 +102,52 @@
 			<div class="content">
 <!-- *************************************************** 여기까지 ****************************************************************** -->
 	<div>
-		<a href="<c:url value='/useList/showUseList.do'/>" class="team_sub_menu">이용내역</a>
-		<a href="<c:url value='/shareList/showShareList.do'/>" class="team_sub_menu">나눔내역</a>
-		<a href="<c:url value='/account/showAccount.do'/>" class="team_sub_menu"> 내정보 </a>
+		
+		<c:if test="${empty sessionScope.admin}">
+			<a href="<c:url value='/useList/showUseList.do'/>" class="team_sub_menu">이용내역</a>
+			<a href="<c:url value='/shareList/showShareList.do'/>" class="team_sub_menu">나눔내역</a>
+			<a href="<c:url value='/account/showAccount.do'/>" class="team_sub_menu"> 내정보 </a>
+		</c:if>
+		<c:if test="${!empty sessionScope.admin}">
+			<a href="<c:url value='/admin/showAccountList.do'/>" class="team_sub_menu">전체 회원</a>
+			<a href="<c:url value='/admin/showShareAccountList.do'/>" class="team_sub_menu">주차공간 나눔 회원</a>
+		</c:if>
+							
+		
 	</div>
 	<hr/>
 	
 <!-- *************************************************** Sub Menu Section ****************************************************************** -->
-
-	ID ${account.id} <br/>
-	
-	NAME ${account.name} <br/>
-	
-	GENDER
-	<c:if test="${account.gender eq 'm'}"> 남 </c:if>
-	<c:if test="${account.gender eq 'w'}"> 여 </c:if>
-	<br/>
-	
-	PHONE ${account.phone} <br/>
-	
-	BIRTHDAY ${account.birthday} <br/>
-	<%
-		request.getParameter("birthday");
-	%>
+	<table style="height:200px">
+		<tr>
+			<td style="width:100px">ID</td>
+			<td style="width:30px">|</td>
+			<td>${account.id}</td>
+		</tr>
+		<tr>
+			<td>NAME</td>
+			<td style="width:30px">|</td>
+			<td>${account.name}</td>
+		</tr>
+		<tr>
+			<td>GENDER</td>
+			<td style="width:30px">|</td>
+			<td>
+				<c:if test="${account.gender eq 'm'}"> 남 </c:if>
+				<c:if test="${account.gender eq 'w'}"> 여 </c:if>
+			</td>
+		</tr>
+		<tr>
+			<td>PHONE</td>
+			<td style="width:30px">|</td>
+			<td>${account.phone}</td>
+		</tr>
+		<tr>
+			<td>BIRTHDAY</td>
+			<td style="width:30px">|</td>
+			<td>${account.birthday}</td>
+		</tr>
+	</table>
 <%-- 	<form method="post"> --%>
 <!--     <div> -->
 <!--         <label>HTML-5: </label> -->

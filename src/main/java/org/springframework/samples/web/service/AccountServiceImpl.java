@@ -36,8 +36,12 @@ public class AccountServiceImpl implements AccountService{
 
 	@Override
 	public void stopAccount(String id) {
-		// TODO Auto-generated method stub
-		
+		accountDao.stopAccount(id);
+	}
+	
+	@Override
+	public void activeAccount(String id) {
+		accountDao.activeAccount(id);
 	}
 
 	@Override

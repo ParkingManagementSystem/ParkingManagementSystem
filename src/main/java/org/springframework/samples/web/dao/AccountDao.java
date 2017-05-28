@@ -19,6 +19,8 @@ public interface AccountDao {
 	
 	void stopAccount(String id) throws DataAccessException;
 	
+	void activeAccount(String id) throws DataAccessException;
+	
 	Account selectAccount(String id) throws DataAccessException;
 	
 	Account getAccount(String id, String pwd) throws DataAccessException;

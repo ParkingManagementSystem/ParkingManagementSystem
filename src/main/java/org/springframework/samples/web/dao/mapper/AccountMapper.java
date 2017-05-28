@@ -22,11 +22,13 @@ public interface AccountMapper {
 	@Update("UPDATE MEMBER SET name = #{name}, gender = #{gender}, phone = #{phone}, birthday = #{birthday}, age = #{age}, blacklist = #{blacklist} WHERE id =#{id}")
 	void updateAccount(Account account);
 	
-	@Delete("DELETE FROM MEMBER WHERE id =#{id}")
+	@Delete("DELETE FROM MEMBER WHERE id = #{id}")
 	void deleteAccount(String id);
 	
+	@Update("UPDATE MEMBER SET blacklist = 1 WHERE id = #{id}")
 	void stopAccount(String id);
 	
+	@Update("UPDATE MEMBER SET blacklist = 0 WHERE id = #{id}")
 	void activeAccount(String id);
 	
 	@Select("SELECT id, pwd, name, gender, phone, birthday, age, blacklist FROM MEMBER WHERE id = #{id}")

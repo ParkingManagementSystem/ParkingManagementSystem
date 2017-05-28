@@ -39,10 +39,14 @@ public class AccountDaoImpl implements AccountDao {
 
 	@Override
 	public void stopAccount(String id) throws DataAccessException {
-		// TODO Auto-generated method stub
-		
+		accountMapper.stopAccount(id);
 	}
 
+	@Override
+	public void activeAccount(String id) throws DataAccessException {
+		accountMapper.activeAccount(id);
+	}
+	
 	@Override
 	public Account selectAccount(String id) throws DataAccessException {
 		return accountMapper.selectAccount(id);
