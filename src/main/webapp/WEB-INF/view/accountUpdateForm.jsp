@@ -81,18 +81,20 @@
 						<br>
 
 						<!-- MAIN MENU -->
-						<a href="index.m2?command=main&type=all" style="padding: 30px">MAIN</a>
-						<a href="team_list.m2?command=teamList&type=all"
-							style="padding: 30px">TEAM</a> <a
-							href="user_recommend.m2?command=recommend" style="padding: 30px">PEOPLE</a>
+						<a href="<c:url value='/map/parkingMap.do' />" style="padding: 30px">붕붕맵</a>
+						
+						<a href="<c:url value='/publicParkingList.do?pageNo=1'/>" style="padding: 30px">공영주차장</a> 
+						
+						<a href="<c:url value='/share/list.do'/>"  style="padding: 30px">공간나눔</a>
+						
 						<!-- MYPAGE / SETTING(ADMIN) -->
 						<c:if test="${empty sessionScope.admin}">
 							<a href="<c:url value='/account/showAccount.do'/>"
-								style="padding: 30px" class="user"> MYPAGE </a>
+								style="padding: 30px" class="user"> 마이페이지 </a>
 						</c:if>
 						<c:if test="${!empty sessionScope.admin}">
 							<a href="<c:url value='/admin/showAccountList.do'/>"
-								style="padding: 30px" class="user"> SETTING </a>
+								style="padding: 30px" class="user"> 관리자페이지 </a>
 						</c:if>
 
 					</div>

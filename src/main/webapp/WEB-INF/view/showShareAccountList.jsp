@@ -78,20 +78,21 @@
 							<br>
 						</c:if>
 						<br>
-
 						<!-- MAIN MENU -->
-						<a href="index.m2?command=main&type=all" style="padding: 30px">MAIN</a>
-						<a href="team_list.m2?command=teamList&type=all"
-							style="padding: 30px">TEAM</a> <a
-							href="user_recommend.m2?command=recommend" style="padding: 30px">PEOPLE</a>
+						<a href="<c:url value='/map/parkingMap.do' />" style="padding: 30px">붕붕맵</a>
+						
+						<a href="<c:url value='/publicParkingList.do?pageNo=1'/>" style="padding: 30px">공영주차장</a> 
+						
+						<a href="<c:url value='/share/list.do'/>"  style="padding: 30px">공간나눔</a>
+						
 						<!-- MYPAGE / SETTING(ADMIN) -->
 						<c:if test="${empty sessionScope.admin}">
 							<a href="<c:url value='/account/showAccount.do'/>"
-								style="padding: 30px" class="user"> MYPAGE </a>
+								style="padding: 30px" class="user"> 마이페이지 </a>
 						</c:if>
 						<c:if test="${!empty sessionScope.admin}">
 							<a href="<c:url value='/admin/showAccountList.do'/>"
-								style="padding: 30px" class="user"> SETTING </a>
+								style="padding: 30px" class="user"> 관리자페이지 </a>
 						</c:if>
 
 					</div>
@@ -155,26 +156,15 @@
 					<div class="stitle">site map</div>
 					<div class="row" style="padding-left: 60px;">
 						<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 sitemap">
-							<a href="index.m2?command=main&type=all">Main</a><br> <a
-								href="index.m2?command=main&type=marketing">Marketing</a><br>
-							<a href="index.m2?command=main&type=develop">Develop</a><br>
-							<a href="index.m2?command=main&type=plan">Plan</a><br> <a
-								href="index.m2?command=main&type=culture">Culture</a><br> <a
-								href="index.m2?command=main&type=design">Design</a><br>
+							<a href="<c:url value='/map/parkingMap.do' />" style="padding: 30px">붕붕맵</a>
 						</div>
+						
 						<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 sitemap">
-							<a href="team_list.m2?command=teamList&type=all">TEAM</a><br>
-							<a href="team_list.m2?command=teamList&type=all">전체 보기</a><br>
-							<a href="team_list.m2?command=teamList&type=urgent">마감임박팀</a><br>
-							<a href="team_list.m2?command=teamList&type=marketing">Marketing</a><br>
-							<a href="team_list.m2?command=teamList&type=develop">Develop</a><br>
-							<a href="team_list.m2?command=teamList&type=plan">Plan</a><br>
-							<a href="team_list.m2?command=teamList&type=culture">Culture</a><br>
-							<a href="team_list.m2?command=teamList&type=design">Design</a><br>
+							<a href="<c:url value='/publicParkingList.do?pageNo=1'/>" style="padding: 30px">공영주차장</a><br>
 						</div>
+						
 						<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 sitemap">
-							<a href="user_recommend.m2?command=recommend"
-								style="padding: 30px">PEOPLE</a><br>
+							<a href="<c:url value='/share/list.do'/>"  style="padding: 30px">공간나눔</a><br>
 						</div>
 						<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 sitemap">
 							<c:if test="${empty sessionScope.admin}">

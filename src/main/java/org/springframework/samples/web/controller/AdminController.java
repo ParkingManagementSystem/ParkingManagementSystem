@@ -69,6 +69,7 @@ public class AdminController {
 	//권한 없을 경우 체크
 	@RequestMapping("/noPermission.do")
 	public String notAdmin() {
+		System.out.println("no permission");
 		return notAdmin;
 	}
 }
