@@ -20,7 +20,7 @@ public class UseListController {
 
 	//사용 목록 보여주기
 	@RequestMapping("/showUseList.do")
-	public ModelAndView showAccountInfo(HttpSession session) {
+	public ModelAndView showUseList(HttpSession session) {
 		ModelAndView mav = new ModelAndView(useList);
 		mav.addObject("useList", useService.showUseList(session.getAttribute("id").toString()));
 		return mav;

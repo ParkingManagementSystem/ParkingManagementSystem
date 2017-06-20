@@ -1,6 +1,5 @@
 package org.springframework.samples.web.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.samples.web.command.ShareParkingCommand;
@@ -24,4 +23,6 @@ public interface ShareService {
 	public List<Apply> getApplyList(String shareParkingCode);
 	
 	public Apply getApply(String shareParkingCode, String applierCode);
+	
+	public List<ShareParking> getShareParkingListByWriter(String writer_id);
 }

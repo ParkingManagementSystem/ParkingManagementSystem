@@ -71,4 +71,12 @@ public interface ShareMapper {
 	@Arg(column = "WRITER_CODE", javaType=String.class, jdbcType = JdbcType.NVARCHAR)
 	})
 	Apply getApply(String shareParkingCode, String applierCode);
+	
+	//사용자가 쓴 나눔 목록 가져오기
+	@Select("SELECT share_parking_code shareParkingCode, writer_id writerId, "
+			+ "parking_name parkingName, address, gu, altitude, longitude, "
+			+ "phone, car_type carType, cost, blacklist, title, content, image "
+			+ "FROM SHARE_PARKING "
+			+ "WHERE writer_id = #{writer_id}")
+	List<ShareParking> getShareParkingListByWriter(String writer_id);
 }

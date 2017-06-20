@@ -36,6 +36,7 @@
 			<mvc:mapping path="/account/showAccount.do"/>
 			<mvc:mapping path="/share/createForm.do"/>
 			<mvc:mapping path="/share/shareParkingInfo.do"/>
+			<mvc:mapping path="/publicParkingListInfo.do"/>
 			<bean class="org.springframework.samples.web.controller.SignInCheckInterceptor" />
 		</mvc:interceptor>
 		

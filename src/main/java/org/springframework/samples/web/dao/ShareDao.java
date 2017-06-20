@@ -22,8 +22,9 @@ public interface ShareDao {
 	
 	List<Reply> getReplyList(String share_parking_code);
 	
-	void insertShareApply(Apply apply);
+	public void insertShareApply(Apply apply);
 	
-	Apply getApply(String shareParkingCode, String applierCode);
+	public Apply getApply(String shareParkingCode, String applierCode);
 	
+	public List<ShareParking> getShareParkingListByWriter(String writer_id);
 }

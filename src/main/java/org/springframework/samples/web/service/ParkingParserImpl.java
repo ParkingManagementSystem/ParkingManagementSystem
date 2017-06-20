@@ -138,7 +138,7 @@ public class ParkingParserImpl  implements XmlParser{
 	           }
 	           for(PublicParking a : list)
                {
-		        Double aa = Double.valueOf(a.getCapacity()).doubleValue()/ (Double.valueOf(a.getCapacity()).doubleValue()+ Double.valueOf(a.getCur_parking()).doubleValue());
+		        Double aa = Double.valueOf(a.getCapacity()).doubleValue()/ (Double.valueOf(a.getCapacity()).doubleValue()+ Double.valueOf(a.getCur_parking()).doubleValue())*10;
 		        a.setPercent(aa);
                   System.out.println(a.getAddr()+ " " +a.getPercent());
                }

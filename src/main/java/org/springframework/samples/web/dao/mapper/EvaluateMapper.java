@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Update;
 
 public interface EvaluateMapper {
 	// Update Average likeCount - hateCount
-	@Update("UPATE evaluate_history SET avgCount = likeCount - hateCount WHERE id = #{id}")
+	@Update("UPDATE evaluate_history SET avgCount = likeCount - hateCount WHERE id = #{id}")
 	void updateAvgCount(String id);
 
 	// likeCount + 1

@@ -76,6 +76,11 @@ public class ShareServiceImpl implements ShareService{
 		apply = shareDao.getApply(shareParkingCode, applierCode);
 		return apply;
 	}
+
+	@Override
+	public List<ShareParking> getShareParkingListByWriter(String writer_id) {
+		return shareDao.getShareParkingListByWriter(writer_id);
+	}
 	
 
 	

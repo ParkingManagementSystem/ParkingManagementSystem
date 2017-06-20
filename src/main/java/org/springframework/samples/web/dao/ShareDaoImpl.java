@@ -11,7 +11,6 @@ import org.springframework.samples.web.domain.Apply;
 import org.springframework.samples.web.domain.Reply;
 import org.springframework.samples.web.domain.ShareParking;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class ShareDaoImpl implements ShareDao{
@@ -75,5 +74,11 @@ public class ShareDaoImpl implements ShareDao{
 		apply = shareMapper.getApply(shareParkingCode, applierCode);
 		System.out.println("dao결과 " + apply.getShareParkingCode() + "  " + apply.getApplierCode() );
 		return apply;
+	}
+
+	//
+	@Override
+	public List<ShareParking> getShareParkingListByWriter(String writer_id) {
+		return shareMapper.getShareParkingListByWriter(writer_id);
 	}
 }
