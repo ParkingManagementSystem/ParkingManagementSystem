@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <% request.setCharacterEncoding("UTF-8"); %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>회원 정보 보기</title>
+<title>비밀번호 수정</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/main.css">
 <link rel="stylesheet"
@@ -16,7 +16,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/button.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/team.css">
+	href="${pageContext.request.contextPath}/resources/css/simpleBanner.css">
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -39,11 +39,6 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/simpleBanner.js"></script>
 
-<script type="text/javascript">
-	function delete_confirm() {
-		return confirm("정말로 탈퇴하시겠습니까?");
-	}
-</script>
 </head>
 <body>
 	<div class="row">
@@ -103,73 +98,28 @@
 			<hr>
 			<div class="content">
 <!-- *************************************************** 여기까지 ****************************************************************** -->
-	<div>
-		
-		<c:if test="${empty sessionScope.admin}">
-			<a href="<c:url value='/useList/showUseList.do'/>" class="team_sub_menu">이용내역</a>
-			<a href="<c:url value='/shareList/showShareList.do'/>" class="team_sub_menu">나눔내역</a>
-			<a href="<c:url value='/account/showAccount.do'/>" class="team_sub_menu"> 내정보 </a>
-		</c:if>
-		<c:if test="${!empty sessionScope.admin}">
-			<a href="<c:url value='/admin/showAccountList.do'/>" class="team_sub_menu">전체 회원</a>
-			<a href="<c:url value='/admin/showShareAccountList.do'/>" class="team_sub_menu">주차공간 나눔 회원</a>
-		</c:if>
-							
-		
-	</div>
-	<hr/>
+	<form:form commandName="pwd" method="post">
 	
-<!-- *************************************************** Sub Menu Section ****************************************************************** -->
-	<table style="height:200px">
-		<tr>
-			<td style="width:100px">ID</td>
-			<td style="width:30px">|</td>
-			<td>${account.id}</td>
-		</tr>
-		<tr>
-			<td>NAME</td>
-			<td style="width:30px">|</td>
-			<td>${account.name}</td>
-		</tr>
-		<tr>
-			<td>GENDER</td>
-			<td style="width:30px">|</td>
-			<td>
-				<c:if test="${account.gender eq 'm'}"> 남 </c:if>
-				<c:if test="${account.gender eq 'w'}"> 여 </c:if>
-			</td>
-		</tr>
-		<tr>
-			<td>PHONE</td>
-			<td style="width:30px">|</td>
-			<td>${account.phone}</td>
-		</tr>
-		<tr>
-			<td>BIRTHDAY</td>
-			<td style="width:30px">|</td>
-			<td>${account.birthday}</td>
-		</tr>
-	</table>
-<%-- 	<form method="post"> --%>
-<!--     <div> -->
-<!--         <label>HTML-5: </label> -->
-<%--         <input  value="${account.birthday}" type="date" id="dateFieldHtml5" class='dateTest'/> --%>
-<!--     </div> -->
-<!--     <div> -->
-<!--         <label>HTML-4: </label> -->
-<!--         <input  value="10/01/2012" id="dateFieldHtml4"  class='dateTest'/> -->
-<!--     </div> -->
-<%-- </form> --%>
+		<form:hidden path="id" />
+		
+		<form:label path="pwdCurrent">현재 비밀번호</form:label> 
+		<form:password path="pwdCurrent" class="form-control" style="width:250px"/>
+		<form:errors path="pwdCurrent" />
+		<br/>
+		
+		<form:label path="pwdNew">새로운 비밀번호</form:label>
+		<form:password path="pwdNew" class="form-control" style="width:250px"/>
+		<form:errors path="pwdNew" />
+		<br/>
+		
+		<form:label path="pwdNewConfirm">새로운 비밀번호 확인</form:label>
+		<form:password path="pwdNewConfirm" class="form-control" style="width:250px"/>
+		<form:errors path="pwdNewConfirm" class="error-color" />
+		<br/>
+		
+		<input type="submit" value="수정하기" class="btn bbtn"  style="width: 250px" />
+	</form:form>
 
-	
-	<c:if test="${empty sessionScope.admin}">
-		<a href="<c:url value='/account/updateAccount.do'/>">회원정보 수정</a><br>
-	
-		<a href="<c:url value='/account/updatePassword.do'/>">비밀번호 수정</a><br>
-	
-		<a href="<c:url value='/account/deleteAccount.do'/>" onClick="return delete_confirm();">탈퇴하기</a><br>
-	</c:if>
-	
 <!-- *************************************************** 여기까지 ****************************************************************** -->
 
 			</div>

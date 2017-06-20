@@ -34,4 +34,8 @@ public interface AccountService {
 	public boolean hasId(String id);
 	
 	public String getAdminId(String id, String pwd);
+	
+	public void updatePassword(String id, String pwd);
+	
+	public String getPwd(String id);
 }

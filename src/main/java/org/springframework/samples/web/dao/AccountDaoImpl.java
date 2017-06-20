@@ -77,6 +77,16 @@ public class AccountDaoImpl implements AccountDao {
 		return accountMapper.selectAdminId(id, pwd);
 	}
 
+	@Override
+	public void updatePassword(String id, String pwd) throws DataAccessException {
+		accountMapper.updatePassword(id, pwd);
+	}
+
+	@Override
+	public String getPwd(String id) throws DataAccessException {
+		return accountMapper.selectPwd(id);
+	}
+
 
 
 }

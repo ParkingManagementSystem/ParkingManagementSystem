@@ -49,4 +49,9 @@ public interface AccountMapper {
 	@Select("SELECT id FROM MANAGER WHERE id = #{id} and pwd = #{pwd}")
 	String selectAdminId(@Param("id") String id, @Param("pwd") String pwd);
 	
+	@Update("UPDATE member SET pwd = #{pwd} WHERE id = #{id}")
+	void updatePassword(@Param("id") String id, @Param("pwd") String pwd);
+	
+	@Select("SELECT pwd FROM member WHERE id = #{id}")
+	String selectPwd(String id);
 }

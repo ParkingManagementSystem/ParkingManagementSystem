@@ -90,7 +90,14 @@ public class AccountServiceImpl implements AccountService{
 		return accountDao.getAdminId(id, pwd);
 	}
 
-	
-	
+	@Override
+	public void updatePassword(String id, String pwd) {
+		accountDao.updatePassword(id, pwd);
+	}
+
+	@Override
+	public String getPwd(String id) {
+		return accountDao.getPwd(id);
+	}
 
 }

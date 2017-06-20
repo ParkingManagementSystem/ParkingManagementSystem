@@ -33,4 +33,7 @@ public interface AccountDao {
 	
 	String getAdminId(String id, String pwd) throws DataAccessException;
 	
+	void updatePassword(String id, String pwd) throws DataAccessException;
+	
+	String getPwd(String id) throws DataAccessException;
 }
