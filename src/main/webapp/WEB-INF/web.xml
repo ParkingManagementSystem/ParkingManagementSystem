@@ -33,7 +33,19 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-
+	
+	
+	<!-- 이미지 테스트 추가 -->
+	<servlet>
+		<servlet-name>DisplayBlobExample</servlet-name>
+		<servlet-class>org.springframework.samples.web.controller.DisplayBlobExample</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DisplayBlobExample</servlet-name>
+		<url-pattern>/DisplayBlobExample</url-pattern>
+	</servlet-mapping>
+	
+	
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>

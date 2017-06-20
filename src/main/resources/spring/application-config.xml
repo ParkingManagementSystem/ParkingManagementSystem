@@ -6,7 +6,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
+	
 	<context:component-scan base-package="org.springframework.samples.web"/>
     	
     <!-- data source 설정 -->
@@ -46,4 +46,9 @@
 
 	
 	<context:annotation-config />
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    	<property name="maxUploadSize" value="5242880000" />
+	</bean>
+
 </beans>
