@@ -2,6 +2,7 @@ package org.springframework.samples.web.domain;
 
 import java.util.Date;
 
+//이거 말고 Use 쓰면됩니당 USE가 새로 바뀐 컬럼들 다 반영된 DTO임!!!
 public class UseHistory {
 	
 	private String useCode;

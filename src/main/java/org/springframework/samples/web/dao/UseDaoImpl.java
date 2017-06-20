@@ -20,13 +20,25 @@ public class UseDaoImpl implements UseDao {
 	}
 
 	@Override
-	public void likeShareParking(String parkingCode) throws DataAccessException {
-		useMapper.likeShareParking(parkingCode);
+	public int getShareParkingRating(String useCode) throws DataAccessException {
+		return useMapper.getShareParkingRating(useCode);
+	}
+	
+	@Override
+	public void likeShareParking(String useCode) throws DataAccessException {
+		useMapper.likeShareParking(useCode);
 	}
 
 	@Override
-	public void dislikeShareParking(String parkingCode) throws DataAccessException {
-		useMapper.dislikeShareParking(parkingCode);
+	public void dislikeShareParking(String useCode) throws DataAccessException {
+		useMapper.dislikeShareParking(useCode);
 	}
+
+	@Override
+	public void cancelLikeShareParking(String useCode) throws DataAccessException {
+		useMapper.cancelLikeShareParking(useCode);
+	}
+
+	
 
 }

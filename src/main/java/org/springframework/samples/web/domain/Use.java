@@ -10,7 +10,8 @@ public class Use {
 	private String image;
 	private String publicParkingCode;
 	private String shareParkingCode;
-	private String id;
+	private String renter;
+	private String lender;
 	public String getUseCode() {
 		return useCode;
 	}
@@ -59,18 +60,24 @@ public class Use {
 	public void setShareParkingCode(String shareParkingCode) {
 		this.shareParkingCode = shareParkingCode;
 	}
-	public String getId() {
-		return id;
+	public String getRenter() {
+		return renter;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setRenter(String renter) {
+		this.renter = renter;
+	}
+	public String getLender() {
+		return lender;
+	}
+	public void setLender(String lender) {
+		this.lender = lender;
 	}
 	@Override
 	public String toString() {
 		return "Use [useCode=" + useCode + ", parkingName=" + parkingName + ", cost=" + cost + ", publicRating="
 				+ publicRating + ", sharingRating=" + sharingRating + ", image=" + image + ", publicParkingCode="
-				+ publicParkingCode + ", shareParkingCode=" + shareParkingCode + ", id=" + id + "]";
+				+ publicParkingCode + ", shareParkingCode=" + shareParkingCode + ", renter=" + renter + ", lender="
+				+ lender + "]";
 	}
-	
 	
 }

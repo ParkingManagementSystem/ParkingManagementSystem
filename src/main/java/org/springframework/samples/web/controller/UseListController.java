@@ -28,15 +28,16 @@ public class UseListController {
 	
 	//사설 주차장 평가 - 좋아요
 	@RequestMapping("/likeUseList.do")
-	public String likeUseList(HttpSession session, @RequestParam("parkingCode") String parkingCode) {
-		//useService.likeShareParking(parkingCode);
+	public String likeUseList(HttpSession session, @RequestParam("useCode") String useCode, @RequestParam("lender") String lender) {
+		System.out.println(useCode + "," + lender);
+		useService.likeShareParking(useCode, lender);
 		return "redirect:/useList/showUseList.do";
 	}
 	
 	//사설 주차장 평가 - 싫어요
 	@RequestMapping("/dislikeUseList.do")
-	public String dislikeUseList(HttpSession session, @RequestParam("parkingCode") String parkingCode) {
-		//useService.dislikeShareParking(parkingCode);
+	public String dislikeUseList(HttpSession session, @RequestParam("useCode") String useCode, @RequestParam("lender") String lender) {
+		useService.dislikeShareParking(useCode, lender);
 		return "redirect:/useList/showUseList.do";
 	}
 }

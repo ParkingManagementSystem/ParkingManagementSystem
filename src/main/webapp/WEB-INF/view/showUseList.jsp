@@ -40,12 +40,17 @@
 <script type="text/javascript" src="js/simpleBanner.js"></script>
 
 <script type="text/javascript">
-	function delete_confirm() {
-		return confirm("정말로 탈퇴하시겠습니까?");
+	function change_opacity(id) {
+		id.style.opacity = 0.5;
+	}
+	function change_opacity(id1, id2) {
+		id1.style.opacity = 0.5;
+		id2.style.opacity = 0.5;
 	}
 </script>
+
 </head>
-<body>
+<body onload="change_opacity();">
 	<div class="row">
 		<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2"></div>
 		<div class="col-md-8 col-xs-8 col-sm-8 col-lg-8">
@@ -145,13 +150,32 @@
 			<td>
 				<%-- 사설 주차장일 경우 --%>
 				<c:if test="${!empty use.shareParkingCode}">
-					<a href="<c:url value='/useList/likeUseList.do?parkingCode=${use.shareParkingCode}'/>">
-						<img src="${pageContext.request.contextPath}/resources/images/like.png" style="height:20px; margin-right:30px; opacity:0.5">
+					<a href="<c:url value='/useList/likeUseList.do?useCode=${use.useCode}&lender=${use.lender}'/>">
+						<img src="${pageContext.request.contextPath}/resources/images/like.png" style="height:20px; margin-right:30px;" id="like${status.count}">
 					</a>
-					<a href="">
-						<img src="${pageContext.request.contextPath}/resources/images/dislike.png" style="height:20px;">
+					<a href="<c:url value='/useList/dislikeUseList.do?useCode=${use.useCode}&lender=${use.lender}'/>">
+						<img src="${pageContext.request.contextPath}/resources/images/dislike.png" style="height:20px;" id="dislike${status.count}">
 					</a>
+					
+					${use.sharingRating}
+					
+					<%-- 아직 추천 비추천이 눌러지지 않은 경우  --%>
+					<c:if test="${0 eq use.sharingRating}">
+						<script>change_opacity(like${status.count}, dislike${status.count});</script>
+					</c:if>
+					
+					<%-- 추천일 경우  --%>
+					<c:if test="${1 eq use.sharingRating}">
+						<script>change_opacity(dislike${status.count});</script>
+					</c:if>
+					
+					<%-- 비추천일 경우  --%>
+					<c:if test="${-1 eq use.sharingRating}">
+						<script>change_opacity(like${status.count});</script>
+					</c:if>
+					
 				</c:if>
+				
 				<%-- 공영 주차장일 경우 --%>
 				<c:if test="${!empty use.publicParkingCode}">
 				</c:if>
