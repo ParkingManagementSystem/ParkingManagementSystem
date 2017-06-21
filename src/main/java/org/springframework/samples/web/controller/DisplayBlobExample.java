@@ -23,7 +23,8 @@ public class DisplayBlobExample extends HttpServlet {
 		Statement stm = null;
 		ResultSet rs = null;
 		
-		System.out.println("nn");
+		String code = request.getParameter("code");
+		System.out.println(code);
 		
 		ServletOutputStream out = response.getOutputStream();
 		
@@ -34,7 +35,7 @@ public class DisplayBlobExample extends HttpServlet {
 			System.out.println("커넥션 성공");
 			if(con != null)
 				System.out.println("커넥션 성공");
-			rs = stm.executeQuery("select img from img_table where p = 1");
+			rs = stm.executeQuery("select image from share_parking where share_parking_code = " + code);
 			if(rs.next()) {
 				System.out.println("dd");
 				image = rs.getBlob(1);

@@ -1,0 +1,16 @@
+.table_left {
+	float:left;
+	margin-right:5px;
+	width:50%;
+}
+.table_right {
+	height:auto;
+	float:right;
+	margin-left:5px;
+	width:50%;
+}
+.reply {
+	
+}.dd {
+	display: flex;
+}

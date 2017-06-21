@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.springframework.samples.web.dao.mapper.ShareMapper">
+	<insert id="saveImage" parameterType="java.util.Map">
+    	UPDATE share_parking SET image = #{img} where share_parking_code = '160'
+	</insert>
+</mapper>

@@ -39,6 +39,18 @@ public class UseDaoImpl implements UseDao {
 		useMapper.cancelLikeShareParking(useCode);
 	}
 
+	@Override
+	public void insertShareUse(Use use) {
+		useMapper.insertShareUse(use);
+		
+	}
+
+	@Override
+	public void insertPublicParkingRating(Use use) throws DataAccessException {
+		// TODO Auto-generated method stub
+		useMapper.insertPublicParkingRating(use);
+	}
+
 	
 
 }

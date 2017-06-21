@@ -11,4 +11,7 @@ public interface UseService {
 	
 	public void dislikeShareParking(String useCode, String parkingCode);
 	
+	public void insertShareUse(Use use);
+	
+	public void insertPublicParkingRating(Use use);
 }

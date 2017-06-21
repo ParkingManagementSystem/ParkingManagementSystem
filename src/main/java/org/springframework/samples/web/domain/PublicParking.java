@@ -31,7 +31,19 @@ String title; //주차장 이름
    String add_rates; //추가 단위 요금
    String day_maximum; //일 최대 요금
    String fulltime_monthly; //월 정기권 금액
-   double percent;
+   double avg_rate; //별점
+   
+   public PublicParking() {
+		
+	}
+   
+   public double getAvg_rate() {
+	return avg_rate;
+}
+public void setAvg_rate(double avg_rate) {
+	this.avg_rate = avg_rate;
+}
+double percent;
    public double getPercent() {
 	return percent;
 }

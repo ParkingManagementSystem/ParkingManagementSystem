@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>°ø¿µÁÖÂ÷Àå</title>
+	<title>ê³µì˜ì£¼ì°¨ìž¥</title>
 	<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/main.css">
 	<link rel="stylesheet"
@@ -57,7 +56,7 @@
 						<c:if test="${!empty sessionScope.id}">
 							<span
 								style='font-size: 15px; padding-right: 10px; color: #8babd6; font-family: Jeju Gothic'>
-								<c:out value="${sessionScope.id}" />´Ô È¯¿µÇÕ´Ï´Ù ^^
+								<c:out value="${sessionScope.id}" />ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤ ^^
 							</span>
 						</c:if>
 
@@ -75,20 +74,20 @@
 						<br>
 
 						<!-- MAIN MENU -->
-						<a href="<c:url value='/map/parkingMap.do' />" style="padding: 30px">ºØºØ¸Ê</a>
+						<a href="<c:url value='/map/parkingMap.do' />" style="padding: 30px">ë¶•ë¶•ë§µ</a>
 						
-						<a href="<c:url value='/publicParkingList.do?pageNo=1'/>" style="padding: 30px">°ø¿µÁÖÂ÷Àå</a> 
+						<a href="<c:url value='/publicParkingList.do?pageNo=1'/>" style="padding: 30px">ê³µì˜ì£¼ì°¨ìž¥</a> 
 						
-						<a href="<c:url value='/share/list.do'/>"  style="padding: 30px">°ø°£³ª´®</a>
+						<a href="<c:url value='/share/list.do'/>"  style="padding: 30px">ê³µê°„ë‚˜ëˆ”</a>
 						
 						<!-- MYPAGE / SETTING(ADMIN) -->
 						<c:if test="${empty sessionScope.admin}">
 							<a href="<c:url value='/account/showAccount.do'/>"
-								style="padding: 30px" class="user"> ¸¶ÀÌÆäÀÌÁö </a>
+								style="padding: 30px" class="user"> ë§ˆì´íŽ˜ì´ì§€ </a>
 						</c:if>
 						<c:if test="${!empty sessionScope.admin}">
 							<a href="<c:url value='/admin/showAccountList.do'/>"
-								style="padding: 30px" class="user"> °ü¸®ÀÚÆäÀÌÁö </a>
+								style="padding: 30px" class="user"> ê´€ë¦¬ìžíŽ˜ì´ì§€ </a>
 						</c:if>
 
 					</div>
@@ -98,14 +97,14 @@
 			<div class="content">
 <!-- ------------------------content---------------------------------- -->
 
-<h1>°ø¿µÁÖÂ÷Àå</h1>
+<h1>ê³µì˜ì£¼ì°¨ìž¥</h1>
 <hr>
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<td>¹øÈ£</td>
-			<td>ÀÌ¸§</td>
-			<td>ÁÖ¼Ò</td>
+			<td>ë²ˆí˜¸</td>
+			<td>ì´ë¦„</td>
+			<td>ì£¼ì†Œ</td>
 		</tr>
 	</thead>
 	<tbody>
@@ -120,9 +119,11 @@
 </table>
 
 <center>
-<c:forEach var="page" begin="1" varStatus="status" end="${page_all}">
+<a href="publicParkingListPageIndexback.do?pageNo=${page_all_start}">ì´ì „</a>
+<c:forEach var="page" begin="${page_all_start}" end="${page_all}">
  	<a href="publicParkingListPage.do?pageNo=${page}">${page}</a>
 </c:forEach>
+<a href="publicParkingListPageIndexfront.do?pageNo=${page_all}">ë‹¤ìŒ</a>
 </center>
 
 <!-- ---------------------------------content----------------------------------------- -->
@@ -134,15 +135,15 @@
 					<div class="stitle">site map</div>
 					<div class="row" style="padding-left: 60px;">
 						<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 sitemap">
-							<a href="<c:url value='/map/parkingMap.do' />" style="padding: 30px">ºØºØ¸Ê</a>
+							<a href="<c:url value='/map/parkingMap.do' />" style="padding: 30px">ë¶•ë¶•ë§µ</a>
 						</div>
 						
 						<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 sitemap">
-							<a href="<c:url value='/publicParkingList.do?pageNo=1'/>" style="padding: 30px">°ø¿µÁÖÂ÷Àå</a><br>
+							<a href="<c:url value='/publicParkingList.do?pageNo=1'/>" style="padding: 30px">ê³µì˜ì£¼ì°¨ìž¥</a><br>
 						</div>
 						
 						<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 sitemap">
-							<a href="<c:url value='/share/list.do'/>"  style="padding: 30px">°ø°£³ª´®</a><br>
+							<a href="<c:url value='/share/list.do'/>"  style="padding: 30px">ê³µê°„ë‚˜ëˆ”</a><br>
 						</div>
 						<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3 sitemap">
 							<c:if test="${empty sessionScope.admin}">

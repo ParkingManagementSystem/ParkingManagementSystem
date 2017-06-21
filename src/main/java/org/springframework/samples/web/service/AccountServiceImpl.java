@@ -99,5 +99,11 @@ public class AccountServiceImpl implements AccountService{
 	public String getPwd(String id) {
 		return accountDao.getPwd(id);
 	}
+	
+	@Override
+	public void setBlackList(String id) {
+		 accountDao.setBlackList(id);
+		
+	}
 
 }

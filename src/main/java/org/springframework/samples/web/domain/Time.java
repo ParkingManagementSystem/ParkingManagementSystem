@@ -7,7 +7,8 @@ public class Time {
 	private String timeCode;
 	private String applyCode;
 	private String parkingId;
-	private Date createdAt;
+	private Date startDate;
+	private Date endDate;
 	private int startHour;
 	private int startMinute;
 	private int endHour;
@@ -15,15 +16,16 @@ public class Time {
 	
 	public Time(){}
 	
-	public Time(String timeCode, String applyCode, String parkingId, Date createdAt, int startHour, int startMinute,
+	public Time(String timeCode, String applyCode, String parkingId, Date createdAt, Date endDate ,int startHour, int startMinute,
 			int endHour, int endMinute) {
 		super();
 		this.timeCode = timeCode;
 		this.applyCode = applyCode;
 		this.parkingId = parkingId;
-		this.createdAt = createdAt;
+		this.startDate = createdAt;
 		this.startHour = startHour;
 		this.startMinute = startMinute;
+		this.endDate = endDate;
 		this.endHour = endHour;
 		this.endMinute = endMinute;
 	}
@@ -46,11 +48,17 @@ public class Time {
 	public void setParkingId(String parkingId) {
 		this.parkingId = parkingId;
 	}
-	public Date getCreatedAt() {
-		return createdAt;
+	public Date getStartDate() {
+		return startDate;
 	}
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
+	public void setStartDate(Date createdAt) {
+		this.startDate = createdAt;
+	}
+	public Date getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(Date createdAt) {
+		this.endDate = createdAt;
 	}
 	public int getStartHour() {
 		return startHour;

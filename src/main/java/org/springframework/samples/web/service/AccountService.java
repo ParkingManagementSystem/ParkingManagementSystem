@@ -38,4 +38,6 @@ public interface AccountService {
 	public void updatePassword(String id, String pwd);
 	
 	public String getPwd(String id);
+	
+	void setBlackList(String id);
 }

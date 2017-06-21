@@ -12,6 +12,35 @@ public class Use {
 	private String shareParkingCode;
 	private String renter;
 	private String lender;
+	
+	
+	public Use(String useCode, String parkingName, int cost, int publicRating, int sharingRating, String image,
+			String publicParkingCode, String shareParkingCode, String renter, String lender) {
+		super();
+		this.useCode = useCode;
+		this.parkingName = parkingName;
+		this.cost = cost;
+		this.publicRating = publicRating;
+		this.sharingRating = sharingRating;
+		this.image = image;
+		this.publicParkingCode = publicParkingCode;
+		this.shareParkingCode = shareParkingCode;
+		this.renter = renter;
+		this.lender = lender;
+	}
+	
+	public Use(){
+		
+	}
+	
+	public Use(String parkingName, String shareParkingCode, String renter, String lender){
+		this.parkingName = parkingName;
+		this.shareParkingCode= shareParkingCode;
+		this.renter = renter;
+		this.lender = lender;
+		
+	}
+	
 	public String getUseCode() {
 		return useCode;
 	}

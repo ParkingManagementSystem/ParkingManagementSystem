@@ -3,6 +3,7 @@ package org.springframework.samples.web.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.web.service.AccountService;
 import org.springframework.samples.web.service.UseServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,9 @@ public class UseListController {
 
 	@Autowired
 	private UseServiceImpl useService;
+	
+	@Autowired
+	private AccountService accountService;
 
 	//사용 목록 보여주기
 	@RequestMapping("/showUseList.do")
@@ -38,6 +42,7 @@ public class UseListController {
 	@RequestMapping("/dislikeUseList.do")
 	public String dislikeUseList(HttpSession session, @RequestParam("useCode") String useCode, @RequestParam("lender") String lender) {
 		useService.dislikeShareParking(useCode, lender);
+		accountService.setBlackList(useCode);
 		return "redirect:/useList/showUseList.do";
 	}
 }

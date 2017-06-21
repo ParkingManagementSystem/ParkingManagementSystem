@@ -5,8 +5,9 @@
 
 <mapper namespace="org.springframework.samples.web.dao.mapper.ImageMapper">
 
-	<insert id="saveImage" parameterType="java.util.Map">
-    	INSERT INTO img_table VALUES(#{img})   
-	</insert>
-	
+   <insert id="saveImage" parameterType="java.util.Map">
+<!--        UPDATE share_parking SET image = RAWTOHEX ('${param1}') where share_parking_code = '${param2}' -->
+       UPDATE share_parking SET image = '${param1}' where share_parking_code = '${param2}'
+   </insert>
+   
 </mapper>

@@ -15,4 +15,8 @@ public interface UseDao {
 	public void dislikeShareParking(String useCode) throws DataAccessException;
 	
 	public void cancelLikeShareParking(String useCode) throws DataAccessException;
+	
+	public void insertShareUse(Use use);
+
+	public void insertPublicParkingRating(Use use) throws DataAccessException;
 }

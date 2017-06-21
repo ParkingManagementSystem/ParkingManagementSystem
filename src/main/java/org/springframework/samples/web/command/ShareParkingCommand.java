@@ -1,5 +1,7 @@
 package org.springframework.samples.web.command;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ShareParkingCommand {
 
 	private String shareParkingCode; // 생성
@@ -7,19 +9,19 @@ public class ShareParkingCommand {
 	private String parkingName;
 	private String address; 
 	private String gu; 
-	private Double altitude; // 일단은 입력 나중에 지오코더써야지 
-	private Double longitude; // 일단은 입력 나중에 지오코더써야지 
+	private Double altitude; 
+	private Double longitude;
 	private String phone;
 	private String carType;
 	private int cost;
 	private int blackList; // 받아와서 저장 
 	private String title;
 	private String content;
-	private String image;
+	private MultipartFile image;
 	
 	public ShareParkingCommand(String shareParkingCode, String writerId, String parkingName, String address, String gu,
 			Double altitude, Double longitude, String phone, String carType, int cost, int blackList, String title,
-			String content, String image) {
+			String content, MultipartFile image) {
 		super();
 		this.shareParkingCode = shareParkingCode;
 		this.writerId = writerId;
@@ -137,10 +139,10 @@ public class ShareParkingCommand {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getImage() {
+	public MultipartFile getImage() {
 		return image;
 	}
-	public void setImage(String image) {
+	public void setImage(MultipartFile image) {
 		this.image = image;
 	}
 }

@@ -12,7 +12,7 @@ public class StudyDao {
 	@Autowired
 	private ImageMapper imageMapper;
 	
-	public void saveImage(Map<String, Object> hmap) throws SQLException {
-		imageMapper.saveImage(hmap);
+	public void saveImage(Map<String, Object> hmap, String code) throws SQLException {
+		imageMapper.saveImage(hmap, code);
 	}
 }

@@ -87,6 +87,10 @@ public class AccountDaoImpl implements AccountDao {
 		return accountMapper.selectPwd(id);
 	}
 
-
+	@Override
+	public void setBlackList(String id) throws DataAccessException {
+		 accountMapper.setBlackList(id);
+		
+	}
 
 }

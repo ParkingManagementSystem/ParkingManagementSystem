@@ -54,4 +54,7 @@ public interface AccountMapper {
 	
 	@Select("SELECT pwd FROM member WHERE id = #{id}")
 	String selectPwd(String id);
+	
+	@Update("update evaluate_history set blackList=1 where avgcount <= -3 and id =#{id}")
+	void setBlackList(String id);
 }

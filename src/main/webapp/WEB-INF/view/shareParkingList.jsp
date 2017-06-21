@@ -103,12 +103,12 @@
 <!-- *************************************************** 여기까지 ****************************************************************** -->
 	
 	<div style="float:right;">
-	<a href = "<c:url value='/share/createForm.do'/>">
+	<a href = "<c:url value='/share/create'/>">
 		<input type="submit" value=" 글 작성하기  " class="btn btn-info"/>
-	</a><br>
+	</a>
 	</div>
 	
-	<br/><br/><br/><br/>
+	<br/><br/><br/>
 	
 	<table class="table table-hover">
 		<tr class="info"><th height="20">글제목</th> <th>주차장이름</th> <th> 구 </th> <th> 작성자 </th> </tr>

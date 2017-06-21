@@ -5,25 +5,26 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.web.command.ShareParkingCommand;
-import org.springframework.samples.web.domain.Account;
-import org.springframework.samples.web.domain.ShareParking;
+import org.springframework.samples.web.dao.ShareDaoImpl;
+import org.springframework.samples.web.dao.StudyDao;
 import org.springframework.samples.web.service.AccountService;
 import org.springframework.samples.web.service.ShareService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
 /*
  * 새로운 공간 나눔 게시글을 작성할 수 있는 Form을 제공하고, 이를 완료하면 공간 나눔 게시글 리스트로 돌려보내는 기능 처리
  */
 
 @Controller
-@RequestMapping("/share/createForm.do")
+@RequestMapping("/share")
 @SessionAttributes("accountSession")
 public class ShareParkingRegisterConroller {
 	
@@ -32,6 +33,14 @@ public class ShareParkingRegisterConroller {
 	
 	@Autowired
 	private AccountService accountService;
+	
+	//
+	@Autowired
+	private ShareDaoImpl shareDao;
+	
+	
+	@Autowired
+	private StudyDao dao;
 	
 	@ModelAttribute("command")
 	public ShareParkingCommand formBacking(HttpServletRequest request, HttpSession session){
@@ -45,7 +54,7 @@ public class ShareParkingRegisterConroller {
 	}
 	
 	// 폼 제공
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(value ="/create")
 	public String createForm(){
 		return "shareParkingRegister";
 	}
@@ -57,20 +66,61 @@ public class ShareParkingRegisterConroller {
 	}
 		
 	// 값 입력받아서 디비 반영
-	@RequestMapping(method=RequestMethod.POST)
-	public String submit(@ModelAttribute("command") ShareParkingCommand share,
-			BindingResult result, SessionStatus session){
+	@RequestMapping(value="/created", method={RequestMethod.POST, RequestMethod.GET})  //@ModelAttribute("command") ShareParkingCommand share, 
+	public String submit(@ModelAttribute("command") ShareParkingCommand share, @RequestParam("image") MultipartFile report,
+			BindingResult result, SessionStatus session, HttpSession ss){
+		int isIn = 0;
 		
-		// 에러여부 확인하는 코드 추가하기 
+		System.out.println("d");
+		
 		if(result.hasErrors()){
-		return "shareParkingRegister"; }
+			System.out.println(result.getAllErrors());
+			return "shareParkingRegister"; 
+		}
 		
 		share.setBlackList(setBlack(share.getWriterId())); // 블랙리스트 여부 반영해서 저장
-		share.setImage(null);
+		//share.setImage(null);
+		
+		System.out.println("컨틀롤러 " + share.getImage() );
 				
 		shareService.insertShareParking(share);
-		return "shareParkingInfo";
+		
+		//입력한 글의 shareParkingCode
+		System.out.println(shareService.getShareParkingCode());
+		
+//		System.out.println("image : " + share.getImage());
+//		//사진 업로드
+//		try {
+//			Map<String, Object> hmap = new HashMap<String, Object>();
+//			hmap.put("image", share.getImage().getBytes());
+//			dao.saveImage(hmap);
+////			shareDao.saveImage(hmap);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+		
+		ss.setAttribute("code", shareService.getShareParkingCode());
+		
+		isIn = shareService.isEvaluate(share.getWriterId());
+		
+		if(isIn == 0) //evaluate table에 들어가 있지 않는 멤버는 새로 추가 
+			shareService.insertEvaluate(share.getWriterId());
+		
+		return "imageTest";
 	}
+	
+//	@RequestMapping("/saveImage")
+//	public String saveImage(Vo vo) {
+//		try {
+//			Map<String, Object> hmap = new HashMap<String, Object>();
+//			hmap.put("img", vo.getImgFile().getBytes());
+//			dao.saveImage(hmap);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return "redirect:/imageTest";
+//	}
 	
 	
 

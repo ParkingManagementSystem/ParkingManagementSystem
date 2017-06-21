@@ -36,4 +36,6 @@ public interface AccountDao {
 	void updatePassword(String id, String pwd) throws DataAccessException;
 	
 	String getPwd(String id) throws DataAccessException;
+	
+	void setBlackList(String id) throws DataAccessException;
 }

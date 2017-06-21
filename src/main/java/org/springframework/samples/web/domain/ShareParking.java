@@ -1,6 +1,7 @@
 package org.springframework.samples.web.domain;
 
 import org.springframework.samples.web.command.ShareParkingCommand;
+import org.springframework.web.multipart.MultipartFile;
 
 public class ShareParking {
 	
@@ -17,11 +18,11 @@ public class ShareParking {
 	private int blackList; // 받아와서 저장 
 	private String title;
 	private String content;
-	private String image;
+	private MultipartFile image;
 	
 	public ShareParking(String shareParkingCode, String writerId, String parkingName, String address, String gu,
 			Double altitude, Double longitude, String phone, String carType, int cost, int blackList, String title,
-			String content, String image) {
+			String content, MultipartFile image) {
 		super();
 		this.shareParkingCode = shareParkingCode;
 		this.writerId = writerId;
@@ -139,10 +140,10 @@ public class ShareParking {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getImage() {
+	public MultipartFile getImage() {
 		return image;
 	}
-	public void setImage(String image) {
+	public void setImage(MultipartFile image) {
 		this.image = image;
 	}
 	
@@ -169,7 +170,7 @@ public class ShareParking {
 		this.blackList = command.getBlackList();
 		this.title = command.getTitle();
 		this.content = command.getContent();
-		this.image = getImage();
+		this.image = command.getImage();
 	}
 
 }

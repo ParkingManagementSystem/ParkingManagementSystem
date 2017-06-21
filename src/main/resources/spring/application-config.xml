@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<context:component-scan base-package="org.springframework.samples.web"/>
-    	
+    
     <!-- data source 설정 -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
@@ -16,9 +16,10 @@
 		<property name="username" value="boongboong2"/>
 		<property name="password" value="qndqnddl"/>
 	</bean>
-	
-	<tx:annotation-driven transaction-manager="transactionManager" />
- 
+    
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    
+    <!-- transaction manager 설정 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
@@ -43,12 +44,13 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="org.springframework.samples.web.dao.mapper" />
     </bean>
-
+    
+	<!--  Annotation 을 사용한 트랜잭션 사용시 활성화 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 	
 	<context:annotation-config />
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
     	<property name="maxUploadSize" value="5242880000" />
 	</bean>
-
 </beans>
